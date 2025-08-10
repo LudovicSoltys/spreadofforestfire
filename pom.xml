@@ -4,9 +4,43 @@
          http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.lso.example</groupId>
-    <artifactId>spread-of-forest-fire</artifactId>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.5.4</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.lso.sandbox.simulator</groupId>
+    <artifactId>parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Simulateur de propagation de feux de forêt</name>
+    <packaging>pom</packaging>
+    <name>parent</name>
+    <description>Simulation de la propagation d’un feu de forêt.</description>
+    <url/>
+    <licenses>
+        <license/>
+    </licenses>
+    <developers>
+        <developer/>
+    </developers>
+    <modules>
+        <module>server</module>
+        <module>ui</module>
+        <module>webapp</module>
+    </modules>
+    <scm>
+        <connection/>
+        <developerConnection/>
+        <tag/>
+        <url/>
+    </scm>
+    <properties>
+        <java.version>24</java.version>
+    </properties>
 
+    <build>
+        <plugins>
+
+        </plugins>
+    </build>
 </project>
