@@ -13,8 +13,6 @@ import com.lso.sandbox.simulator.exposed.http.controllers.fires.internal.domain.
 import com.lso.sandbox.simulator.infra.engine.di.FireSpreadingEngineMod;
 import com.lso.sandbox.simulator.infra.facade.di.BoardFacadeMod;
 import com.lso.sandbox.simulator.infra.facade.di.FiresFacadeMod;
-import jakarta.validation.Validation;
-import jakarta.validation.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

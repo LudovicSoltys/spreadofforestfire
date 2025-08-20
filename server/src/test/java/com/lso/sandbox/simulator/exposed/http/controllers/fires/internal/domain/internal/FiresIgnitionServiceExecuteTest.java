@@ -1,11 +1,8 @@
 package com.lso.sandbox.simulator.exposed.http.controllers.fires.internal.domain.internal;
 
 import com.lso.sandbox.simulator.exposed.http.controllers.fires.internal.domain.api.FireIgnitionUseCase;
-import com.lso.sandbox.simulator.exposed.http.controllers.fires.internal.domain.api.FireRetrievalUseCase;
 import com.lso.sandbox.simulator.exposed.http.controllers.fires.internal.domain.spi.CellChanges;
-import com.lso.sandbox.simulator.exposed.http.controllers.fires.internal.domain.spi.Coordinates;
 import com.lso.sandbox.simulator.exposed.http.controllers.fires.internal.domain.spi.FiresRegistror;
-import com.lso.sandbox.simulator.exposed.http.controllers.fires.internal.domain.spi.OngoingFiresInventory;
 import com.lso.sandbox.simulator.shared.util.Either;
 import com.lso.sandbox.simulator.shared.validation.Errors;
 import org.junit.jupiter.api.BeforeEach;

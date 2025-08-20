@@ -2,7 +2,6 @@ package com.lso.sandbox.simulator.exposed.http.controllers.fires.internal.domain
 
 import com.lso.sandbox.simulator.exposed.http.controllers.board.internal.domain.spi.AvailableBoard;
 import com.lso.sandbox.simulator.exposed.http.controllers.board.internal.domain.spi.CurrentBoardSupplier;
-import com.lso.sandbox.simulator.exposed.http.controllers.fires.internal.domain.api.FireIgnitionUseCase;
 import com.lso.sandbox.simulator.exposed.http.controllers.fires.internal.domain.api.FirePropagationUseCase;
 import com.lso.sandbox.simulator.exposed.http.controllers.fires.internal.domain.spi.CellChanges;
 import com.lso.sandbox.simulator.exposed.http.controllers.fires.internal.domain.spi.FireHandlingProcessor;
@@ -17,8 +16,6 @@ import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
 
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Tests sur {@link FiresPropagationService#execute(FirePropagationUseCase.Input, FirePropagationUseCase.Output)}

@@ -1,11 +1,9 @@
 package com.lso.sandbox.simulator.infra.facade.internal;
 
-import com.lso.sandbox.simulator.exposed.http.controllers.fires.internal.domain.spi.CellChanges;
 import com.lso.sandbox.simulator.exposed.http.controllers.fires.internal.domain.spi.Coordinates;
 import com.lso.sandbox.simulator.exposed.http.controllers.fires.internal.domain.spi.OngoingFiresInventory;
 import com.lso.sandbox.simulator.infra.data.api.BoardJpaCrudRepository;
 import com.lso.sandbox.simulator.infra.data.api.BoardJpaEntity;
-import com.lso.sandbox.simulator.infra.data.api.CellJpaEntity;
 import com.lso.sandbox.simulator.infra.data.api.CellJpaQueryRepository;
 import com.lso.sandbox.simulator.shared.util.Either;
 import com.lso.sandbox.simulator.shared.util.IterableUtils;

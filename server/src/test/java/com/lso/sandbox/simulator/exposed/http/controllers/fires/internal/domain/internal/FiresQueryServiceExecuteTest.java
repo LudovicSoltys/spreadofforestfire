@@ -1,8 +1,5 @@
 package com.lso.sandbox.simulator.exposed.http.controllers.fires.internal.domain.internal;
 
-import com.lso.sandbox.simulator.exposed.http.controllers.cells.internal.domain.api.CellsListUseCase;
-import com.lso.sandbox.simulator.exposed.http.controllers.cells.internal.domain.internal.CellsListService;
-import com.lso.sandbox.simulator.exposed.http.controllers.cells.internal.domain.spi.AllCellsSupplier;
 import com.lso.sandbox.simulator.exposed.http.controllers.fires.internal.domain.api.FireRetrievalUseCase;
 import com.lso.sandbox.simulator.exposed.http.controllers.fires.internal.domain.spi.OngoingFiresInventory;
 import com.lso.sandbox.simulator.shared.util.Either;
