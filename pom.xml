@@ -26,7 +26,6 @@
     <modules>
         <module>server</module>
         <module>ui</module>
-        <module>webapp</module>
     </modules>
     <scm>
         <connection/>
@@ -37,10 +36,4 @@
     <properties>
         <java.version>24</java.version>
     </properties>
-
-    <build>
-        <plugins>
-
-        </plugins>
-    </build>
 </project>
