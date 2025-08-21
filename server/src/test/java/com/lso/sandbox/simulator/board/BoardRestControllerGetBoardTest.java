@@ -1,8 +1,8 @@
 package com.lso.sandbox.simulator.board;
 
+import com.lso.sandbox.simulator.board.registror.BoardUpdatingUseCase;
 import com.lso.sandbox.simulator.board.supplier.AvailableBoard;
 import com.lso.sandbox.simulator.board.supplier.BoardRetrievalUseCase;
-import com.lso.sandbox.simulator.board.registror.BoardUpdatingUseCase;
 import com.lso.sandbox.simulator.utils.RandomUtils;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;

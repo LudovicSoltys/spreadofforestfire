@@ -1,7 +1,6 @@
 package com.lso.sandbox.simulator.fires.add;
 
 import com.lso.sandbox.simulator.fires.add.facade.CellChangesApplied;
-import com.lso.sandbox.simulator.fires.add.facade.CellChangesToApply;
 import com.lso.sandbox.simulator.fires.add.facade.FiresRegistror;
 import com.lso.sandbox.simulator.shared.util.Either;
 import com.lso.sandbox.simulator.shared.validation.Errors;

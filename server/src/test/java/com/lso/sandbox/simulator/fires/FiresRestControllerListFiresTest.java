@@ -1,8 +1,8 @@
 package com.lso.sandbox.simulator.fires;
 
 import com.lso.sandbox.simulator.fires.add.FireIgnitionUseCase;
-import com.lso.sandbox.simulator.fires.propagation.FirePropagationUseCase;
 import com.lso.sandbox.simulator.fires.list.FireRetrievalUseCase;
+import com.lso.sandbox.simulator.fires.propagation.FirePropagationUseCase;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

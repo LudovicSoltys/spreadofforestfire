@@ -1,8 +1,6 @@
 package com.lso.sandbox.simulator.fires.validation;
 
-import com.lso.sandbox.simulator.fires.FiresAddRequest;
 import com.lso.sandbox.simulator.fires.FiresChangeRequest;
-import com.lso.sandbox.simulator.fires.propagation.calcul.Bounds;
 import com.lso.sandbox.simulator.repositories.BoardJpaCrudRepository;
 import com.lso.sandbox.simulator.repositories.BoardJpaEntity;
 import jakarta.validation.ConstraintValidator;

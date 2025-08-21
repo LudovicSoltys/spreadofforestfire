@@ -1,8 +1,8 @@
 package com.lso.sandbox.simulator.board;
 
-import com.lso.sandbox.simulator.board.registror.facade.BoardRegistror;
 import com.lso.sandbox.simulator.board.registror.BoardReplaceService;
 import com.lso.sandbox.simulator.board.registror.BoardUpdatingUseCase;
+import com.lso.sandbox.simulator.board.registror.facade.BoardRegistror;
 import com.lso.sandbox.simulator.board.supplier.BoardRetrievalUseCase;
 import com.lso.sandbox.simulator.board.supplier.BoardRetrieveService;
 import com.lso.sandbox.simulator.board.supplier.facade.BoardSupplierMod;

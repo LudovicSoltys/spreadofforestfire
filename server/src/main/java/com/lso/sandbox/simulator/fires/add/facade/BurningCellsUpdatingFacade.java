@@ -1,6 +1,9 @@
 package com.lso.sandbox.simulator.fires.add.facade;
 
-import com.lso.sandbox.simulator.repositories.*;
+import com.lso.sandbox.simulator.repositories.BoardJpaCrudRepository;
+import com.lso.sandbox.simulator.repositories.BoardJpaEntity;
+import com.lso.sandbox.simulator.repositories.CellJpaCrudRepository;
+import com.lso.sandbox.simulator.repositories.CellJpaQueryRepository;
 import com.lso.sandbox.simulator.shared.util.Either;
 import com.lso.sandbox.simulator.shared.util.IterableUtils;
 import com.lso.sandbox.simulator.shared.validation.Errors;

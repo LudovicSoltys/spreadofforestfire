@@ -2,9 +2,9 @@ package com.lso.sandbox.simulator.fires.propagation;
 
 import com.lso.sandbox.simulator.board.supplier.AvailableBoard;
 import com.lso.sandbox.simulator.board.supplier.facade.CurrentBoardSupplier;
-import com.lso.sandbox.simulator.fires.propagation.engine.FireSpreadingProcessor;
 import com.lso.sandbox.simulator.fires.add.facade.FiresRegistror;
 import com.lso.sandbox.simulator.fires.list.facade.OngoingFiresInventory;
+import com.lso.sandbox.simulator.fires.propagation.engine.FireSpreadingProcessor;
 import com.lso.sandbox.simulator.shared.util.Either;
 import com.lso.sandbox.simulator.shared.validation.Errors;
 import jakarta.transaction.Transactional;

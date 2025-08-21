@@ -1,7 +1,6 @@
 package com.lso.sandbox.simulator.fires;
 
 import com.lso.sandbox.simulator.fires.add.facade.CellChangesApplied;
-import com.lso.sandbox.simulator.fires.add.facade.CellChangesToApply;
 import com.lso.sandbox.simulator.fires.propagation.FirePropagationUseCase;
 import com.lso.sandbox.simulator.shared.Message;
 import com.lso.sandbox.simulator.shared.util.IterableUtils;

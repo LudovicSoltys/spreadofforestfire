@@ -1,9 +1,7 @@
 package com.lso.sandbox.simulator.fires;
 
 import com.lso.sandbox.simulator.fires.add.FireIgnitionUseCase;
-import com.lso.sandbox.simulator.fires.add.facade.CellChangesApplied;
 import com.lso.sandbox.simulator.fires.add.facade.CellChangesToApply;
-import com.lso.sandbox.simulator.fires.shared.Coordinates;
 
 class PostFiresInput implements FireIgnitionUseCase.Input {
 

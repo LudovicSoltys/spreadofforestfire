@@ -2,8 +2,8 @@ package com.lso.sandbox.simulator.fires;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lso.sandbox.simulator.fires.add.FireIgnitionUseCase;
-import com.lso.sandbox.simulator.fires.propagation.FirePropagationUseCase;
 import com.lso.sandbox.simulator.fires.list.FireRetrievalUseCase;
+import com.lso.sandbox.simulator.fires.propagation.FirePropagationUseCase;
 import com.lso.sandbox.simulator.repositories.BoardJpaCrudRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

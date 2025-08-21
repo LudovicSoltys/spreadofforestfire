@@ -1,7 +1,6 @@
 package com.lso.sandbox.simulator.fires;
 
 import com.lso.sandbox.simulator.fires.shared.Coordinates;
-import com.lso.sandbox.simulator.fires.validation.BoundsDefinedConstraint;
 import com.lso.sandbox.simulator.fires.validation.InBoundConstraint;
 import com.lso.sandbox.simulator.fires.validation.StillAliveConstraint;
 import jakarta.validation.Valid;

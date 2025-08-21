@@ -1,9 +1,9 @@
 package com.lso.sandbox.simulator.cells;
 
-import com.lso.sandbox.simulator.cells.list.facade.AllCellsSupplier;
-import com.lso.sandbox.simulator.cells.list.facade.CellsFacadeMod;
 import com.lso.sandbox.simulator.cells.list.CellsListService;
 import com.lso.sandbox.simulator.cells.list.CellsListUseCase;
+import com.lso.sandbox.simulator.cells.list.facade.AllCellsSupplier;
+import com.lso.sandbox.simulator.cells.list.facade.CellsFacadeMod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
