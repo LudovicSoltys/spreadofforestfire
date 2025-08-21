@@ -1,5 +1,6 @@
 package com.lso.sandbox.simulator.shared.util;
 
+import java.util.Collection;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
@@ -23,5 +24,13 @@ public class IterableUtils {
 
     public static <T> Iterable<T> concat(Iterable<T> elements, Iterable<T> others) {
         return Stream.concat(streamOf(elements), streamOf(others)).toList();
+    }
+
+    public static <T> void addAll(Collection<T> addTo, Iterable<? extends T> elementsToAdd) {
+        elementsToAdd.forEach(addTo::add);
+    }
+
+    public static <T> boolean noneMatch(Iterable<T> elements, T value) {
+        return streamOf(elements).noneMatch(value::equals);
     }
 }

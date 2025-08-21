@@ -1,0 +1,13 @@
+{
+  "items": [
+    {
+      "y": 0,
+      "x": 0,
+      "burning": false,
+      "dead": false
+    }
+  ],
+  "messages": [],
+  "errors": [],
+  "totalElements": 1
+}
