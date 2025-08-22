@@ -33,3 +33,31 @@ Ce qui nous intéresse n’est pas de simplement voir un programme de simulation
 - Comment vous présentez votre travail une fois réalisé
 
 image:./docs/src/public/images/image001.jpg[Règles du simulateur]
+
+
+== Environnement de développement
+
+- OS : Windows 10
+- IDE : Intellij IDEA Community Edition 2025.2
+- Apache Maven : 3.9.9
+- Node : 22.18.0
+- npm : 11.5.2
+
+== Architecture technique
+
+La solution prend la forme d'une application web, composée d'un Frontend pour la présentation, d'un Backend pour l'application serveur, et d'une base de données pour persister les données.
+
+image:./docs/src/public/images/archi.png[architecture]
+
+=== Frontend
+
+Le Frontend est une application web en Javascript/Typescript/Vue 3.
+
+=== Backend
+
+Le Backend est une application serveur Java 24/Spring Boot 3.
+
+
+=== Base de données
+
+La base de données utilisée est H2. Elle est construite au démarrage de l'application serveur et détruite à son exinction.
