@@ -16,3 +16,5 @@ npm install
 ```sh
 npm run dev
 ```
+
+L'application est alors disponible en Local :  http://localhost:5173/

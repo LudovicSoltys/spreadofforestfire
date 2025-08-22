@@ -2,16 +2,25 @@
 import axios from 'axios'
 import Cell from './Cell.vue'
 
+const httpClient = axios.create({
+  baseURL: 'http://localhost:8080/',
+  headers: {
+    "Cache-Control": "no-cache",
+    "Content-Type": "application/json;charset=utf-8",
+    "Access-Control-Allow-Origin": "*",
+  },
+});
+
 export default {
   components: { Cell },
   data() {
     return {
-      h: 2,
-      w: 4,
+      h: 0,
+      w: 0,
       items: [],
       selectedCells: [],
-      newWidth: 4,
-      newHeight: 2
+      newWidth: 0,
+      newHeight: 0
     };
   },
   computed: {
@@ -54,10 +63,15 @@ export default {
   methods: {
     callReset() {
       console.log("call Reset : " + this.newWidth + ", " + this.newHeight);
-      this.$forceUpdate();
+      this.resetBoard();
+
+      const list = this.getCells();
+
+      this.selectedCells = [];
     },
     callNextStep() {
       console.log("call NextStep");
+      this.nextStep();
     },
     callNextWidth(value) {
       console.log("call NextWidth : " + value);
@@ -76,20 +90,33 @@ export default {
       this.selectedCells.push(message);
     },
     async getCells() {
-      const response = await axios.get('/api/cells');
+      const response = await httpClient.get('/api/cells');
       console.log(response);
       this.items = response.items;
     },
     async addFires() {
-      const response = await axios.post('/api/fires')
+      const params = {
+        "dryRun": false,
+        "targets": this.selectedCells
+      }
+      const response = await httpClient.post('/api/fires', params);
       console.log(response);
     },
     async resetBoard() {
-      const response = await axios.post('/api/board')
+      const params = {
+        "attributes": {
+          "width": this.newWidth,
+          "height": this.newHeight
+        }
+      };
+      const response = await httpClient.post('/api/board', params);
       console.log(response);
     },
     async nextStep() {
-      const response = await axios.post('/api/fires/next')
+      const params = {
+        "dryRun": true
+      };
+      const response = await httpClient.post('/api/fires/next', params);
       console.log(response);
     }
   }
