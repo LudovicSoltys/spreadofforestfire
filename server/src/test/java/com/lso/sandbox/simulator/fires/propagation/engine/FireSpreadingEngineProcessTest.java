@@ -5,6 +5,8 @@ import com.lso.sandbox.simulator.fires.propagation.calcul.FireSpreadingCalculato
 import com.lso.sandbox.simulator.repositories.BoardJpaCrudRepository;
 import com.lso.sandbox.simulator.repositories.CellJpaCrudRepository;
 import com.lso.sandbox.simulator.repositories.CellJpaQueryRepository;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test of {@link FireSpreadingEngine#process(Iterable, Context)}
@@ -20,4 +22,9 @@ class FireSpreadingEngineProcessTest {
     private CellJpaQueryRepository mockQuery;
 
     private CellJpaCrudRepository mockRepository;
+
+    @Test
+    void should_check_something() {
+        Assertions.fail("Not implemented yet...");
+    }
 }
