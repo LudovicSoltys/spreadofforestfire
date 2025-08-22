@@ -1,35 +1,41 @@
-# Server
+= Server
 
 - Java: 24
 - Maven
-## Project Setup
+
+== Project Setup
 
 ```sh
 mvn clean install
 ```
 
-### Lancement de l'application
+== Lancement de l'application
 
 ```sh
 java -jar SimulationApplication.java
 ```
 
-### Tester l'application via Postman
+== Tester l'application via Postman
 
 - Importer le fichier `./src/e2e/postman/simulator_collection.postman_collection_2.1`
 
-## Application
+== Application
 
 Il s'agit d'une application Serveur qui expose différents services sous forme d'une API HTTP REST.
 
 Les ressources exposées sont :
+
 - le `board` : définit le périmètre du simulateur. Il prend la forme d'un quadrilatère, avec sa longueur, `witdh`, et sa largeur, `height`.
 - les `cells` : définissent les unités de terrain dans le périmètre. Chaque unité est définit par sa position, via les coordonées `x` et `y`.
-- le `fire` est l'élément qui fait évoluer l'état des cellules. Initialement, elles sont définies comme `vertes`, puis elles s'enflamment (`burning`), et enfin meurent (`dead`).
+- le `fire` est l'élément qui fait évoluer l'état des cellules. Initialement, elles sont définies comme `green`, puis elles s'enflamment (`burning`), et enfin meurent (`dead`).
 
 Les webservices mis à disposition sont :
+
 - `HTTP GET /api/board` : permet de consulter les informations courantes sur le plateau.
 - `HTTP POST /api/board` : permet d'initialiser le plateau, via la définition de ses dimensions. Les anciennes données sur les cellules et le plateau sont perdues.
 - `HTTP GET /api/board` : liste les cellules, avec leur position et leur état courant
 - `HTTP POST /api/fires` : permet de changer l'état d'une cellule pour la mettre en feu
 - `HTTP POST /api/fires/next` : permet de propager le feu à partir des cellules déjà en feu, à l'état courant.
+
+
+image:../docs/src/public/images/postman.png[architecture]
