@@ -25,6 +25,8 @@ class FireSpreadingEngineProcessTest {
 
     @Test
     void should_check_something() {
+
+        // then
         Assertions.fail("Not implemented yet...");
     }
 }

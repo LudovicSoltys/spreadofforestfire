@@ -4,6 +4,7 @@ import com.lso.sandbox.simulator.SimulationApplication;
 import com.lso.sandbox.simulator.board.supplier.BoardRetrievalUseCase;
 import org.assertj.core.api.Assertions;
 import org.hamcrest.Matchers;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,6 +24,11 @@ class BoardRestControllerGetPresentBoardE2ETest {
 
     @Autowired
     private BoardRetrievalUseCase retrieveUseCase;
+
+    @BeforeEach
+    void setUp() {
+        Assertions.fail("Not implemented yet...");
+    }
 
     @Test
     void context_loads() {
