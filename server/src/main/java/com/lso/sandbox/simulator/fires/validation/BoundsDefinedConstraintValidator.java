@@ -6,6 +6,9 @@ import com.lso.sandbox.simulator.repositories.BoardJpaEntity;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
+/**
+ * Implémentation de {@link ConstraintValidator}. Permet de valider que le périmètre de la simulation est bien défini.
+ */
 public class BoundsDefinedConstraintValidator implements ConstraintValidator<BoundsDefinedConstraint, FiresChangeRequest> {
 
     private final BoardJpaCrudRepository boards;

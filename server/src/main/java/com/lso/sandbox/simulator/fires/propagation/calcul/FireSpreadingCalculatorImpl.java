@@ -12,6 +12,9 @@ import java.util.Collection;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+/**
+ * Implémentation de {@link FireSpreadingCalculator}
+ */
 public class FireSpreadingCalculatorImpl implements FireSpreadingCalculator {
 
     private final BoardJpaCrudRepository boards;

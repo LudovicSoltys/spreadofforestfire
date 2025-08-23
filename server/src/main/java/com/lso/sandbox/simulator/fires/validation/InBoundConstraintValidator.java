@@ -1,13 +1,18 @@
 package com.lso.sandbox.simulator.fires.validation;
 
 import com.lso.sandbox.simulator.fires.FiresAddRequest;
+import com.lso.sandbox.simulator.fires.FiresAddRequest.TargetItem;
 import com.lso.sandbox.simulator.fires.propagation.calcul.Bounds;
 import com.lso.sandbox.simulator.repositories.BoardJpaCrudRepository;
 import com.lso.sandbox.simulator.repositories.BoardJpaEntity;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
-public class InBoundConstraintValidator implements ConstraintValidator<InBoundConstraint, FiresAddRequest.TargetItem> {
+/**
+ * Implémentation de {@link ConstraintValidator}. Permet de valider qu'un {@link FiresAddRequest.TargetItem} est dans le
+ * périmètre de la simulation.
+ */
+public class InBoundConstraintValidator implements ConstraintValidator<InBoundConstraint, TargetItem> {
 
     private final BoardJpaCrudRepository boards;
 
@@ -16,7 +21,7 @@ public class InBoundConstraintValidator implements ConstraintValidator<InBoundCo
     }
 
     @Override
-    public boolean isValid(FiresAddRequest.TargetItem value, ConstraintValidatorContext context) {
+    public boolean isValid(TargetItem value, ConstraintValidatorContext context) {
 
         if (boards.isEmpty()) {
             return false;

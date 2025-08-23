@@ -22,6 +22,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
+/**
+ * Module dédié au domaine métier de la gestion des incendies : consultation, création et propagation.
+ */
 @Configuration
 @Import( {BoardSupplierMod.class, FireSpreadingEngineMod.class, FiresFacadeMod.class})
 public class FireDomainMod {

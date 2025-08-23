@@ -6,6 +6,8 @@ import com.lso.sandbox.simulator.shared.validation.Errors;
 
 public interface OngoingFiresInventory {
 
+    boolean isEmpty();
+
     Either<Errors, OngoingFires> findAll();
 
     interface OngoingFires {

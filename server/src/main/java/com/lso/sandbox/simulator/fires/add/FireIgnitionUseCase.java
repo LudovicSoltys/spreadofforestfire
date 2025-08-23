@@ -5,6 +5,9 @@ import com.lso.sandbox.simulator.fires.add.facade.CellChangesToApply;
 import com.lso.sandbox.simulator.shared.Message;
 import com.lso.sandbox.simulator.shared.validation.Errors;
 
+/**
+ * Définition du besoin métier de créer de nouveaux incendies
+ */
 public interface FireIgnitionUseCase {
 
     void execute(Input input, Output output);

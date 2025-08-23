@@ -13,6 +13,15 @@ import jakarta.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
+/**
+ * Implémentation de {@link FireSpreadingProcessor}
+ * <p>
+ * À partir des coordonnées initiales des incendies :
+ * * calcule les coordonnées suivantes
+ * * marque les cellules correspondantes comme "en feu"
+ * * marque les cellules initiales comme "mortes" (c'est-à-dire brûlées)
+ */
 public class FireSpreadingEngine implements FireSpreadingProcessor {
 
     private final BoardJpaCrudRepository boards;
@@ -21,13 +30,10 @@ public class FireSpreadingEngine implements FireSpreadingProcessor {
 
     private final CellJpaQueryRepository query;
 
-    private final CellJpaCrudRepository cells;
-
-    public FireSpreadingEngine(BoardJpaCrudRepository boards, FireSpreadingCalculator calculator, CellJpaQueryRepository query, CellJpaCrudRepository cells) {
+    public FireSpreadingEngine(BoardJpaCrudRepository boards, FireSpreadingCalculator calculator, CellJpaQueryRepository query) {
         this.boards = boards;
         this.calculator = calculator;
         this.query = query;
-        this.cells = cells;
     }
 
     @Override
@@ -53,36 +59,21 @@ public class FireSpreadingEngine implements FireSpreadingProcessor {
 
         Iterable<CellChangesToApply> newDeadChanges = markCellsAsDead(initialBurningCells, context);
 
-        incrementBoardStep(board, context);
-
         return Either.right(IterableUtils.concat(newDeadChanges, newBurningChanges));
-    }
-
-    private void incrementBoardStep(BoardJpaEntity board, Context context) {
-
-        board.setLastStep(context.targetStep());
-        boards.save(board);
-
     }
 
     private Iterable<CellChangesToApply> markCellsAsBurning(Iterable<Coordinates> targets, Context context) {
 
-        Iterable<CellJpaEntity> newBurningEntities =  query.findAllByCoordinates(targets).stream()
+        return query.findAllByCoordinates(targets).stream()
                 .peek(entity -> entity.setBurntAt(context.targetStep()))
-                .toList();
-
-        return IterableUtils.streamOf(cells.saveAll(newBurningEntities))
                 .map(entity -> CellChangesToApply.burningCell(entity.getX(), entity.getY()))
                 .toList();
     }
 
     private Iterable<CellChangesToApply> markCellsAsDead(Iterable<Coordinates> targets, Context context) {
 
-        Iterable<CellJpaEntity> newDeadEntities = query.findAllByCoordinates(targets).stream()
+        return query.findAllByCoordinates(targets).stream()
                 .peek(entity -> entity.setDeadAt(context.targetStep()))
-                .toList();
-
-        return IterableUtils.streamOf(cells.saveAll(newDeadEntities))
                 .map(entity -> CellChangesToApply.deadCell(entity.getX(), entity.getY()))
                 .toList();
     }

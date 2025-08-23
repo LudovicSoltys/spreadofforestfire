@@ -9,6 +9,8 @@ import com.lso.sandbox.simulator.shared.util.Either;
 import com.lso.sandbox.simulator.shared.validation.Errors;
 import jakarta.transaction.Transactional;
 
+import java.util.List;
+
 /**
  * Implémentation de {@link FirePropagationUseCase}
  */
@@ -40,8 +42,12 @@ public class FiresPropagationService implements FirePropagationUseCase {
             return;
         }
 
-        Context context = Context.next(board.get().currentStep());
+        if (inventory.isEmpty()) {
+            output.accept(List.of());
+            return;
+        }
 
+        Context context = Context.next(board.get().currentStep());
         inventory
                 .findAll()
                 .flatMap(fires -> engine.process(fires.getItems(), context))

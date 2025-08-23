@@ -6,6 +6,9 @@ import com.lso.sandbox.simulator.fires.shared.Coordinates;
 import com.lso.sandbox.simulator.shared.util.Either;
 import com.lso.sandbox.simulator.shared.validation.Errors;
 
+/**
+ * Moteur de la propagation d'un incendie.
+ */
 public interface FireSpreadingProcessor {
 
     Either<Errors, Iterable<CellChangesToApply>> process(Iterable<Coordinates> values, Context context);

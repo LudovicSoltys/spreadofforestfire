@@ -2,6 +2,9 @@ package com.lso.sandbox.simulator.fires.add.facade;
 
 import com.lso.sandbox.simulator.fires.shared.Coordinates;
 
+/**
+ * Modèle du nouvel état d'un incendie, après propagation
+ */
 public interface CellChangesApplied extends Coordinates {
 
     boolean isDead();

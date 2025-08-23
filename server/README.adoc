@@ -11,8 +11,16 @@ mvn clean install
 
 == Lancement de l'application
 
+== depuis l'IDE
+
+Exécuter `SimulationApplication::main()`
+
+== depuis un terminal
+
+Aller dans ./server/target :
+
 ```sh
-java -jar SimulationApplication.java
+java -jar server-0.0.1-SNAPSHOT.java
 ```
 
 Une fois lancée, l'application est disponible en local : http://localhost:8080/

@@ -2,6 +2,9 @@ package com.lso.sandbox.simulator.fires.propagation.calcul;
 
 import com.lso.sandbox.simulator.fires.shared.Coordinates;
 
+/**
+ * Limites du périmètre de propagation
+ */
 public interface Bounds {
 
     byte yMin();

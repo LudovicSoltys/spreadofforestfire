@@ -8,6 +8,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
+/**
+ * Module de consultation des incendies
+ */
 @Configuration
 @Import(DataMod.class)
 public class FiresFacadeMod {

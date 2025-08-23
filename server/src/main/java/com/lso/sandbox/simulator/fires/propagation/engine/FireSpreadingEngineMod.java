@@ -10,6 +10,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
+/**
+ * Configuration du module dédié au calcul de la propagation des incendies
+ */
 @Configuration
 @Import(DataMod.class)
 public class FireSpreadingEngineMod {
@@ -22,9 +25,8 @@ public class FireSpreadingEngineMod {
     @Bean
     public FireSpreadingProcessor engineProcessor(@Autowired BoardJpaCrudRepository boards,
                                                   @Autowired CellJpaQueryRepository query,
-                                                  @Autowired CellJpaCrudRepository cells,
                                                   @Autowired FireSpreadingCalculatorImpl propagationProcessor) {
 
-        return new FireSpreadingEngine(boards, propagationProcessor, query, cells);
+        return new FireSpreadingEngine(boards, propagationProcessor, query);
     }
 }

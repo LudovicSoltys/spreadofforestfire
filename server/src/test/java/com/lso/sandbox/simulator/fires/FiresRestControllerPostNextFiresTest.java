@@ -5,7 +5,10 @@ import com.lso.sandbox.simulator.fires.add.FireIgnitionUseCase;
 import com.lso.sandbox.simulator.fires.list.FireRetrievalUseCase;
 import com.lso.sandbox.simulator.fires.propagation.FirePropagationUseCase;
 import com.lso.sandbox.simulator.repositories.BoardJpaCrudRepository;
+import com.lso.sandbox.simulator.repositories.BoardJpaEntity;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
@@ -17,7 +20,11 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(controllers = FiresRestController.class)
-class FiresRestControllerPostNewFiresTest {
+class FiresRestControllerPostNextFiresTest {
+
+    private static final ObjectMapper mapper = new ObjectMapper();
+
+    private static final BoardJpaEntity boardEntity = new BoardJpaEntity((byte) 10, (byte) 10);
 
     @Autowired
     private MockMvc mockMvc;
@@ -34,17 +41,18 @@ class FiresRestControllerPostNewFiresTest {
     @MockitoBean
     private BoardJpaCrudRepository boardJpaCrudRepository;
 
-    private static final ObjectMapper mapper = new ObjectMapper();
-
     @Test
-    void should_apply_changes() throws Exception {
+    void should_apply_changes_when_board_is_defined() throws Exception {
 
         // given
+        Mockito.when(boardJpaCrudRepository.isEmpty()).thenReturn(false);
+        Mockito.when(boardJpaCrudRepository.first()).thenReturn(boardEntity);
+
         FiresPropagationRequest requestBody = new FiresPropagationRequest();
         String requestBodyAsJson = mapper.writeValueAsString(requestBody);
 
         // when
-        ResultActions result = this.mockMvc.perform(post("/api/fires")
+        ResultActions result = this.mockMvc.perform(post("/api/fires/next")
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("utf-8")
                 .content(requestBodyAsJson)
@@ -53,6 +61,28 @@ class FiresRestControllerPostNewFiresTest {
         // then
         result
                 .andExpect(status().isOk())
+                .andReturn();
+    }
+
+    @Test
+    void should_return_http_code_400_when_board_is_not_defined() throws Exception {
+
+        // given
+        Mockito.when(boardJpaCrudRepository.isEmpty()).thenReturn(true);
+
+        FiresPropagationRequest requestBody = new FiresPropagationRequest();
+        String requestBodyAsJson = mapper.writeValueAsString(requestBody);
+
+        // when
+        ResultActions result = this.mockMvc.perform(post("/api/fires/next")
+                .contentType(MediaType.APPLICATION_JSON)
+                .characterEncoding("utf-8")
+                .content(requestBodyAsJson)
+                .accept(MediaType.APPLICATION_JSON));
+
+        // then
+        result
+                .andExpect(status().isBadRequest())
                 .andReturn();
     }
 }

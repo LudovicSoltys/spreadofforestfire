@@ -58,6 +58,9 @@ public class BurningCellsUpdatingFacade implements FiresRegistror {
                 .map(entity -> CellChangesApplied.deadCell(entity.getX(), entity.getY()))
                 .toList();
 
+        board.incrementLastStep();
+        boards.save(board);
+
         return Either.right(IterableUtils.concat(changedToBurnt, changedToDead));
     }
 }

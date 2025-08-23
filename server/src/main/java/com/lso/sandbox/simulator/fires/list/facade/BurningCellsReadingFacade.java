@@ -3,6 +3,7 @@ package com.lso.sandbox.simulator.fires.list.facade;
 import com.lso.sandbox.simulator.fires.shared.Coordinates;
 import com.lso.sandbox.simulator.repositories.BoardJpaCrudRepository;
 import com.lso.sandbox.simulator.repositories.BoardJpaEntity;
+import com.lso.sandbox.simulator.repositories.CellJpaEntity;
 import com.lso.sandbox.simulator.repositories.CellJpaQueryRepository;
 import com.lso.sandbox.simulator.shared.util.Either;
 import com.lso.sandbox.simulator.shared.util.IterableUtils;
@@ -22,6 +23,14 @@ public class BurningCellsReadingFacade implements OngoingFiresInventory {
     public BurningCellsReadingFacade(BoardJpaCrudRepository boards, CellJpaQueryRepository inventory) {
         this.boards = boards;
         this.inventory = inventory;
+    }
+
+    @Override
+    public boolean isEmpty() {
+
+        BoardJpaEntity board = boards.first();
+
+        return inventory.findByBurntAtEquals(board.getLastStep()).isEmpty();
     }
 
     @Override

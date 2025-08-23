@@ -1,5 +1,8 @@
 package com.lso.sandbox.simulator.fires;
 
+/**
+ * Corps de la requête de propagation de l'incendie
+ */
 public class FiresPropagationRequest implements FiresChangeRequest {
 
     private boolean dryRun = false;
