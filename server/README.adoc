@@ -5,9 +5,10 @@
 
 == Project Setup
 
-```sh
+[source,sh]
+----
 mvn clean install
-```
+----
 
 == Lancement de l'application
 
@@ -19,9 +20,10 @@ Exécuter `SimulationApplication::main()`
 
 Aller dans ./server/target :
 
-```sh
+[source,sh]
+----
 java -jar server-0.0.1-SNAPSHOT.java
-```
+----
 
 Une fois lancée, l'application est disponible en local : http://localhost:8080/
 

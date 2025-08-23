@@ -6,7 +6,6 @@ import com.lso.sandbox.simulator.fires.list.FireRetrievalUseCase;
 import com.lso.sandbox.simulator.fires.propagation.FirePropagationUseCase;
 import com.lso.sandbox.simulator.repositories.BoardJpaCrudRepository;
 import com.lso.sandbox.simulator.repositories.BoardJpaEntity;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;

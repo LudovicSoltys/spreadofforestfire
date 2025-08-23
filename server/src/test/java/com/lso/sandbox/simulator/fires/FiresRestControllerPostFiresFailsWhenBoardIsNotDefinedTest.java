@@ -5,7 +5,6 @@ import com.lso.sandbox.simulator.fires.add.FireIgnitionUseCase;
 import com.lso.sandbox.simulator.fires.list.FireRetrievalUseCase;
 import com.lso.sandbox.simulator.fires.propagation.FirePropagationUseCase;
 import com.lso.sandbox.simulator.repositories.BoardJpaCrudRepository;
-import com.lso.sandbox.simulator.repositories.BoardJpaEntity;
 import com.lso.sandbox.simulator.repositories.CellJpaEntity;
 import com.lso.sandbox.simulator.repositories.CellJpaQueryRepository;
 import com.lso.sandbox.simulator.utils.RandomUtils;
@@ -20,7 +19,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
 import java.util.List;
-import java.util.Optional;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;

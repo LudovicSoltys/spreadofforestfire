@@ -3,7 +3,6 @@ package com.lso.sandbox.simulator.fires.list.facade;
 import com.lso.sandbox.simulator.fires.shared.Coordinates;
 import com.lso.sandbox.simulator.repositories.BoardJpaCrudRepository;
 import com.lso.sandbox.simulator.repositories.BoardJpaEntity;
-import com.lso.sandbox.simulator.repositories.CellJpaEntity;
 import com.lso.sandbox.simulator.repositories.CellJpaQueryRepository;
 import com.lso.sandbox.simulator.shared.util.Either;
 import com.lso.sandbox.simulator.shared.util.IterableUtils;

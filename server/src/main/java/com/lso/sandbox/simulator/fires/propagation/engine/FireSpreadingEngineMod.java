@@ -2,7 +2,6 @@ package com.lso.sandbox.simulator.fires.propagation.engine;
 
 import com.lso.sandbox.simulator.fires.propagation.calcul.FireSpreadingCalculatorImpl;
 import com.lso.sandbox.simulator.repositories.BoardJpaCrudRepository;
-import com.lso.sandbox.simulator.repositories.CellJpaCrudRepository;
 import com.lso.sandbox.simulator.repositories.CellJpaQueryRepository;
 import com.lso.sandbox.simulator.repositories.DataMod;
 import org.springframework.beans.factory.annotation.Autowired;
