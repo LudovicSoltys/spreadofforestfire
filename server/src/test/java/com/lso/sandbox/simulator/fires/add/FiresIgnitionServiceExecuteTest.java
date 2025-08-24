@@ -1,15 +1,12 @@
 package com.lso.sandbox.simulator.fires.add;
 
-import com.lso.sandbox.simulator.fires.add.facade.CellChangesApplied;
-import com.lso.sandbox.simulator.fires.add.facade.FiresRegistror;
+import com.lso.sandbox.simulator.repositories.facades.fire.changes.FiresRegistror;
 import com.lso.sandbox.simulator.shared.util.Either;
 import com.lso.sandbox.simulator.shared.validation.Errors;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
-
-import java.util.List;
 
 /**
  * Tests sur {@link FiresIgnitionService#execute(FireIgnitionUseCase.Input, FireIgnitionUseCase.Output)}
@@ -30,8 +27,8 @@ class FiresIgnitionServiceExecuteTest {
     void should_delegate_to_registror_on_success() {
 
         // given
-        CellChangesApplied expected = Mockito.mock(CellChangesApplied.class);
-        Mockito.when(mockRegistror.saveAll(Mockito.any())).thenReturn(Either.right(List.of(expected)));
+        FireChangesApplied expected = Mockito.mock(FireChangesApplied.class);
+        Mockito.when(mockRegistror.saveAll(Mockito.any())).thenReturn(Either.right(expected));
 
         FireIgnitionUseCase.Input mockInput = Mockito.mock(FireIgnitionUseCase.Input.class);
         FireIgnitionUseCase.Output mockOutput = Mockito.mock(FireIgnitionUseCase.Output.class);

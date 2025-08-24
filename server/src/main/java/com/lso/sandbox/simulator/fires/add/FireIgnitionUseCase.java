@@ -1,8 +1,5 @@
 package com.lso.sandbox.simulator.fires.add;
 
-import com.lso.sandbox.simulator.fires.add.facade.CellChangesApplied;
-import com.lso.sandbox.simulator.fires.add.facade.CellChangesToApply;
-import com.lso.sandbox.simulator.shared.Message;
 import com.lso.sandbox.simulator.shared.validation.Errors;
 
 /**
@@ -12,15 +9,19 @@ public interface FireIgnitionUseCase {
 
     void execute(Input input, Output output);
 
+    /**
+     * Données d'entrée
+     */
     interface Input {
-        Iterable<CellChangesToApply> targets();
+        FireChangesToApply targets();
     }
 
+    /**
+     * Données de sortie
+     */
     interface Output {
 
-        Iterable<Message> getMessages();
-
-        void accept(Iterable<CellChangesApplied> values);
+        void accept(FireChangesApplied values);
 
         void reject(Errors error);
     }

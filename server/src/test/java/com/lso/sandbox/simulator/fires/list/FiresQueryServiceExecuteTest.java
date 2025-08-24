@@ -1,6 +1,6 @@
 package com.lso.sandbox.simulator.fires.list;
 
-import com.lso.sandbox.simulator.fires.list.facade.OngoingFiresInventory;
+import com.lso.sandbox.simulator.repositories.facades.fire.query.OngoingFiresInventory;
 import com.lso.sandbox.simulator.shared.util.Either;
 import com.lso.sandbox.simulator.shared.validation.Errors;
 import org.junit.jupiter.api.BeforeEach;
@@ -27,7 +27,7 @@ class FiresQueryServiceExecuteTest {
     void should_delegate_to_supplier_on_success() {
 
         // given
-        OngoingFiresInventory.OngoingFires expected = Mockito.mock(OngoingFiresInventory.OngoingFires.class);
+        OngoingFires expected = Mockito.mock(OngoingFires.class);
         Mockito.when(mockSupplier.findAll()).thenReturn(Either.right(expected));
 
         FireRetrievalUseCase.Input mockInput = Mockito.mock(FireRetrievalUseCase.Input.class);

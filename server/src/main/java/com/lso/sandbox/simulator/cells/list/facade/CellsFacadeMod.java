@@ -1,7 +1,7 @@
 package com.lso.sandbox.simulator.cells.list.facade;
 
-import com.lso.sandbox.simulator.repositories.CellJpaCrudRepository;
-import com.lso.sandbox.simulator.repositories.DataMod;
+import com.lso.sandbox.simulator.repositories.data.CellJpaCrudRepository;
+import com.lso.sandbox.simulator.repositories.data.DataMod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

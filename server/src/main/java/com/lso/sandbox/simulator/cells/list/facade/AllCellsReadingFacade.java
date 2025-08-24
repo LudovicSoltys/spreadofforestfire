@@ -1,7 +1,7 @@
 package com.lso.sandbox.simulator.cells.list.facade;
 
-import com.lso.sandbox.simulator.repositories.CellJpaCrudRepository;
-import com.lso.sandbox.simulator.repositories.CellJpaEntity;
+import com.lso.sandbox.simulator.repositories.data.CellJpaCrudRepository;
+import com.lso.sandbox.simulator.repositories.data.CellJpaEntity;
 import com.lso.sandbox.simulator.shared.util.Either;
 import com.lso.sandbox.simulator.shared.util.IterableUtils;
 import com.lso.sandbox.simulator.shared.validation.Errors;

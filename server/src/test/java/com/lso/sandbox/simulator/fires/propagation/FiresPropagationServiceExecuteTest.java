@@ -2,10 +2,12 @@ package com.lso.sandbox.simulator.fires.propagation;
 
 import com.lso.sandbox.simulator.board.supplier.AvailableBoard;
 import com.lso.sandbox.simulator.board.supplier.facade.CurrentBoardSupplier;
-import com.lso.sandbox.simulator.fires.add.facade.CellChangesApplied;
-import com.lso.sandbox.simulator.fires.add.facade.FiresRegistror;
-import com.lso.sandbox.simulator.fires.list.facade.OngoingFiresInventory;
-import com.lso.sandbox.simulator.fires.propagation.engine.FireSpreadingProcessor;
+import com.lso.sandbox.simulator.fires.add.FireChangesApplied;
+import com.lso.sandbox.simulator.fires.add.FireChangesToApply;
+import com.lso.sandbox.simulator.fires.list.OngoingFires;
+import com.lso.sandbox.simulator.fires.propagation.engine.FireSpreadingCalculator;
+import com.lso.sandbox.simulator.repositories.facades.fire.changes.FiresRegistror;
+import com.lso.sandbox.simulator.repositories.facades.fire.query.OngoingFiresInventory;
 import com.lso.sandbox.simulator.shared.util.Either;
 import com.lso.sandbox.simulator.shared.validation.Errors;
 import com.lso.sandbox.simulator.utils.RandomUtils;
@@ -14,8 +16,6 @@ import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
 
-import java.util.List;
-
 /**
  * Tests sur {@link FiresPropagationService#execute(FirePropagationUseCase.Input, FirePropagationUseCase.Output)}
  */
@@ -23,13 +23,13 @@ class FiresPropagationServiceExecuteTest {
 
     private FiresPropagationService subject;
 
-    private CurrentBoardSupplier mockSupplier = Mockito.mock(CurrentBoardSupplier.class);
+    private final CurrentBoardSupplier mockSupplier = Mockito.mock(CurrentBoardSupplier.class);
 
-    private OngoingFiresInventory mockInventory = Mockito.mock(OngoingFiresInventory.class);
+    private final OngoingFiresInventory mockInventory = Mockito.mock(OngoingFiresInventory.class);
 
-    private FireSpreadingProcessor mockEngine = Mockito.mock(FireSpreadingProcessor.class);
+    private final FireSpreadingCalculator mockEngine = Mockito.mock(FireSpreadingCalculator.class);
 
-    private FiresRegistror mockRegistror = Mockito.mock(FiresRegistror.class);
+    private final FiresRegistror mockRegistror = Mockito.mock(FiresRegistror.class);
 
     @BeforeEach
     void setUp() {
@@ -67,15 +67,14 @@ class FiresPropagationServiceExecuteTest {
         Mockito.when(mockBoard.currentStep()).thenReturn(RandomUtils.randomInt(1, 10));
         Mockito.when(mockSupplier.get()).thenReturn(Either.right(mockBoard));
 
-        OngoingFiresInventory.OngoingFires mockFires = Mockito.mock(OngoingFiresInventory.OngoingFires.class);
-        Mockito.when(mockFires.getItems()).thenReturn(List.of());
+        OngoingFires mockFires = Mockito.mock(OngoingFires.class);
         Mockito.when(mockFires.isEmpty()).thenReturn(true);
         Mockito.when(mockInventory.findAll()).thenReturn(Either.right(mockFires));
 
-        Mockito.when(mockEngine.process(Mockito.any(), Mockito.any())).thenReturn(Either.right(List.of()));
+        Mockito.when(mockEngine.process(Mockito.any())).thenReturn(Either.right(Mockito.mock(FireChangesToApply.class)));
 
-        CellChangesApplied mockChanges = Mockito.mock(CellChangesApplied.class);
-        Mockito.when(mockRegistror.saveAll(Mockito.any())).thenReturn(Either.right(List.of(mockChanges)));
+        FireChangesApplied mockChanges = Mockito.mock(FireChangesApplied.class);
+        Mockito.when(mockRegistror.saveAll(Mockito.any())).thenReturn(Either.right(mockChanges));
 
         FirePropagationUseCase.Input mockInput = Mockito.mock(FirePropagationUseCase.Input.class);
         FirePropagationUseCase.Output mockOutput = Mockito.mock(FirePropagationUseCase.Output.class);

@@ -1,6 +1,6 @@
 package com.lso.sandbox.simulator.fires.list;
 
-import com.lso.sandbox.simulator.fires.list.facade.OngoingFiresInventory;
+import com.lso.sandbox.simulator.repositories.facades.fire.query.OngoingFiresInventory;
 
 /**
  * Implémentation de {@link FireRetrievalUseCase}
@@ -17,6 +17,6 @@ public class FiresQueryService implements FireRetrievalUseCase {
     public void execute(Input input, Output output) {
 
         fires.findAll()
-                .then(output::reject, items -> output.accept(items.getItems()));
+                .then(output::reject, output::accept);
     }
 }

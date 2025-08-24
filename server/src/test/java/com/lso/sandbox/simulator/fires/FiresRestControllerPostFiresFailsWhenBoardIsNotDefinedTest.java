@@ -4,9 +4,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lso.sandbox.simulator.fires.add.FireIgnitionUseCase;
 import com.lso.sandbox.simulator.fires.list.FireRetrievalUseCase;
 import com.lso.sandbox.simulator.fires.propagation.FirePropagationUseCase;
-import com.lso.sandbox.simulator.repositories.BoardJpaCrudRepository;
-import com.lso.sandbox.simulator.repositories.CellJpaEntity;
-import com.lso.sandbox.simulator.repositories.CellJpaQueryRepository;
+import com.lso.sandbox.simulator.repositories.data.BoardJpaCrudRepository;
+import com.lso.sandbox.simulator.repositories.data.CellJpaQueryRepository;
 import com.lso.sandbox.simulator.utils.RandomUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -80,9 +79,5 @@ class FiresRestControllerPostFiresFailsWhenBoardIsNotDefinedTest {
         mock.setX(x);
         mock.setY(y);
         return mock;
-    }
-
-    private static CellJpaEntity mockCellEntity(int x, int y) {
-        return new CellJpaEntity((byte) x, (byte) y);
     }
 }

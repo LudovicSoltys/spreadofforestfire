@@ -1,6 +1,6 @@
 package com.lso.sandbox.simulator.fires.add;
 
-import com.lso.sandbox.simulator.fires.add.facade.FiresRegistror;
+import com.lso.sandbox.simulator.repositories.facades.fire.changes.FiresRegistror;
 
 /**
  * Implémentation de {@link FireIgnitionUseCase}

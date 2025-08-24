@@ -1,7 +1,7 @@
 package com.lso.sandbox.simulator.fires;
 
 import com.lso.sandbox.simulator.fires.list.FireRetrievalUseCase;
-import com.lso.sandbox.simulator.fires.shared.Coordinates;
+import com.lso.sandbox.simulator.fires.list.OngoingFires;
 import com.lso.sandbox.simulator.shared.Message;
 import com.lso.sandbox.simulator.shared.util.IterableUtils;
 import com.lso.sandbox.simulator.shared.validation.Errors;
@@ -11,14 +11,14 @@ import java.util.List;
 
 class FiresListOutput implements FireListResponse, FireRetrievalUseCase.Output {
 
-    private Iterable<Coordinates> content = List.of();
+    private List<FireListResponseItem> content;
 
     private final List<Message> messages = new ArrayList<>();
 
     private final List<Message> errors = new ArrayList<>();
 
     @Override
-    public Iterable<Coordinates> getContent() {
+    public Iterable<FireListResponseItem> getContent() {
         return content;
     }
 
@@ -38,9 +38,9 @@ class FiresListOutput implements FireListResponse, FireRetrievalUseCase.Output {
     }
 
     @Override
-    public void accept(Iterable<Coordinates> values) {
+    public void accept(OngoingFires values) {
 
-        this.content = values;
+        this.content = values.stream().map(FireListResponseItem::of).toList();
 
         if (IterableUtils.isEmpty(values)) {
             messages.add(Message.of("fires.empty"));

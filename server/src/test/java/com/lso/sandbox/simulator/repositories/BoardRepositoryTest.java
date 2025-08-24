@@ -1,5 +1,7 @@
 package com.lso.sandbox.simulator.repositories;
 
+import com.lso.sandbox.simulator.repositories.data.BoardJpaCrudRepository;
+import com.lso.sandbox.simulator.repositories.data.BoardJpaEntity;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

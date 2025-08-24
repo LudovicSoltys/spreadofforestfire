@@ -1,9 +1,10 @@
 package com.lso.sandbox.simulator.board.supplier;
 
 import com.lso.sandbox.simulator.shared.util.Mappable;
-import org.immutables.value.Value;
 
-@Value.Immutable
+/**
+ * Informations sur le plateau de la simulation
+ */
 public interface AvailableBoard extends Mappable<AvailableBoard> {
 
     long getWidth();
@@ -18,6 +19,10 @@ public interface AvailableBoard extends Mappable<AvailableBoard> {
 
     int deadCount();
 
+    /**
+     *
+     * @return un plateau vide
+     */
     static AvailableBoard empty() {
         return new AvailableBoard() {
 

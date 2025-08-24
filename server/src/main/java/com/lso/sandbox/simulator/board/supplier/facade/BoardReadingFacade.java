@@ -1,9 +1,9 @@
 package com.lso.sandbox.simulator.board.supplier.facade;
 
 import com.lso.sandbox.simulator.board.supplier.AvailableBoard;
-import com.lso.sandbox.simulator.repositories.BoardJpaCrudRepository;
-import com.lso.sandbox.simulator.repositories.BoardJpaEntity;
-import com.lso.sandbox.simulator.repositories.CellsStatsJpaQueryRepository;
+import com.lso.sandbox.simulator.repositories.data.BoardJpaCrudRepository;
+import com.lso.sandbox.simulator.repositories.data.BoardJpaEntity;
+import com.lso.sandbox.simulator.repositories.data.CellsStatsJpaQueryRepository;
 import com.lso.sandbox.simulator.shared.util.Either;
 import com.lso.sandbox.simulator.shared.validation.Errors;
 import com.lso.sandbox.simulator.shared.validation.SimpleErrors;
@@ -30,14 +30,17 @@ public class BoardReadingFacade implements CurrentBoardSupplier {
 
         return boards
                 .first()
-                .map(entity -> new SimpleAvailableBoard(entity,
+                .map(entity -> new ImmutableAvailableBoard(entity,
                         stats.countByBurntAtIsNull(),
                         stats.countByBurntAtIsNotNullAndDeadAtIsNull(),
                         stats.countByDeadAtIsNotNull()))
                 .map(Either::right);
     }
 
-    class SimpleAvailableBoard implements AvailableBoard {
+    /**
+     * Une implémentation immuable de {@link AvailableBoard}
+     */
+    static class ImmutableAvailableBoard implements AvailableBoard {
 
         private final BoardJpaEntity entity;
 
@@ -47,7 +50,14 @@ public class BoardReadingFacade implements CurrentBoardSupplier {
 
         private final Integer countDead;
 
-        public SimpleAvailableBoard(BoardJpaEntity entity, Integer countAlive, Integer countBurning, Integer countDead) {
+        /**
+         * Crée une nouvelle instance
+         * @param entity doit être non null
+         * @param countAlive un entier positif
+         * @param countBurning un entier positif
+         * @param countDead un entier positif
+         */
+        ImmutableAvailableBoard(BoardJpaEntity entity, Integer countAlive, Integer countBurning, Integer countDead) {
             this.entity = entity;
             this.countAlive = countAlive;
             this.countBurning = countBurning;

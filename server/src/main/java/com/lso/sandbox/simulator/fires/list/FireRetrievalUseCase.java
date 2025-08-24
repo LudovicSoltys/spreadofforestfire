@@ -1,6 +1,5 @@
 package com.lso.sandbox.simulator.fires.list;
 
-import com.lso.sandbox.simulator.fires.shared.Coordinates;
 import com.lso.sandbox.simulator.shared.validation.Errors;
 
 /**
@@ -16,7 +15,7 @@ public interface FireRetrievalUseCase {
 
     interface Output {
 
-        void accept(Iterable<Coordinates> items);
+        void accept(OngoingFires values);
 
         void reject(Errors error);
     }

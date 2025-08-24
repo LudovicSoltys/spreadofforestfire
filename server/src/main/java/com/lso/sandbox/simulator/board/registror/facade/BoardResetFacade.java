@@ -1,9 +1,9 @@
 package com.lso.sandbox.simulator.board.registror.facade;
 
-import com.lso.sandbox.simulator.repositories.BoardJpaCrudRepository;
-import com.lso.sandbox.simulator.repositories.BoardJpaEntity;
-import com.lso.sandbox.simulator.repositories.CellJpaCrudRepository;
-import com.lso.sandbox.simulator.repositories.CellJpaEntity;
+import com.lso.sandbox.simulator.repositories.data.BoardJpaCrudRepository;
+import com.lso.sandbox.simulator.repositories.data.BoardJpaEntity;
+import com.lso.sandbox.simulator.repositories.data.CellJpaCrudRepository;
+import com.lso.sandbox.simulator.repositories.data.CellJpaEntity;
 import com.lso.sandbox.simulator.shared.util.Either;
 import com.lso.sandbox.simulator.shared.validation.Errors;
 

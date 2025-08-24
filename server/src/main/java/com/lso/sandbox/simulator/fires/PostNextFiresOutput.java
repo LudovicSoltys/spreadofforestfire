@@ -1,6 +1,6 @@
 package com.lso.sandbox.simulator.fires;
 
-import com.lso.sandbox.simulator.fires.add.facade.CellChangesApplied;
+import com.lso.sandbox.simulator.fires.add.FireChangeApplied;
 import com.lso.sandbox.simulator.fires.propagation.FirePropagationUseCase;
 import com.lso.sandbox.simulator.shared.Message;
 import com.lso.sandbox.simulator.shared.util.IterableUtils;
@@ -33,7 +33,7 @@ class PostNextFiresOutput implements FiresChangeResponse, FirePropagationUseCase
     }
 
     @Override
-    public void accept(Iterable<CellChangesApplied> values) {
+    public void accept(Iterable<FireChangeApplied> values) {
 
         this.changes = IterableUtils.streamOf(values).map(PostFiresOutputChanges::new).toList();
 

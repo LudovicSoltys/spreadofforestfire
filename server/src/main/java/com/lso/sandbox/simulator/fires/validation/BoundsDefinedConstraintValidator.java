@@ -1,8 +1,8 @@
 package com.lso.sandbox.simulator.fires.validation;
 
 import com.lso.sandbox.simulator.fires.FiresChangeRequest;
-import com.lso.sandbox.simulator.repositories.BoardJpaCrudRepository;
-import com.lso.sandbox.simulator.repositories.BoardJpaEntity;
+import com.lso.sandbox.simulator.repositories.data.BoardJpaCrudRepository;
+import com.lso.sandbox.simulator.repositories.data.BoardJpaEntity;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 

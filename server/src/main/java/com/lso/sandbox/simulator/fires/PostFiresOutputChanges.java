@@ -1,6 +1,6 @@
 package com.lso.sandbox.simulator.fires;
 
-import com.lso.sandbox.simulator.fires.add.facade.CellChangesApplied;
+import com.lso.sandbox.simulator.fires.add.FireChangeApplied;
 
 class PostFiresOutputChanges {
 
@@ -15,7 +15,7 @@ class PostFiresOutputChanges {
     public PostFiresOutputChanges() {
     }
 
-    public PostFiresOutputChanges(CellChangesApplied data) {
+    public PostFiresOutputChanges(FireChangeApplied data) {
         this.x = data.getX();
         this.y = data.getY();
         this.dead = data.isDead();

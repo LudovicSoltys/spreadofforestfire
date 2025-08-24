@@ -10,6 +10,9 @@ import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * Définition de l'API HTTP REST de gestion des incendies
+ */
 @Validated
 @RestController
 @RequestMapping("/api/fires")
@@ -29,6 +32,11 @@ public class FiresRestController {
         this.retrieveUseCase = retrieveUseCase;
     }
 
+    /**
+     *
+     * @param request le corps de la requête est inutile pour le moment
+     * @return le compte-rendu de l'opération
+     */
     @PostMapping(
             value = "/next",
             consumes = MediaType.APPLICATION_JSON_VALUE,
@@ -47,6 +55,11 @@ public class FiresRestController {
         return output;
     }
 
+    /**
+     *
+     * @param request le corps de la requête contient la liste des incendies à ajouter
+     * @return le compte-rendu de l'opération
+     */
     @PostMapping(
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -64,6 +77,10 @@ public class FiresRestController {
         return output;
     }
 
+    /**
+     *
+     * @return la liste des incendies en cours
+     */
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public FireListResponse listFires() {
 
@@ -74,7 +91,7 @@ public class FiresRestController {
 
         retrieveUseCase.execute(input, output);
 
-        LOG.debug("Message=Operation of retrieving current fires is done;Result={}", output);
+        LOG.debug("Message=Operation of retrieving current fires is done;Result={};", output);
 
         return output;
     }

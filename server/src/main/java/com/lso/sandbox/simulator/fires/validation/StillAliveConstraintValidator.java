@@ -1,8 +1,8 @@
 package com.lso.sandbox.simulator.fires.validation;
 
 import com.lso.sandbox.simulator.fires.FiresAddRequest;
-import com.lso.sandbox.simulator.repositories.CellJpaEntity;
-import com.lso.sandbox.simulator.repositories.CellJpaQueryRepository;
+import com.lso.sandbox.simulator.repositories.data.CellJpaEntity;
+import com.lso.sandbox.simulator.repositories.data.CellJpaQueryRepository;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
