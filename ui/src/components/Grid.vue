@@ -1,11 +1,12 @@
 <template>
   <div class="board">
-    <div v-for="j in 6">
-      <div v-for="i in 5">
-        <span>{{ i }} - {{ j }}</span>
-        <Cell />
-      </div>
-    </div>
+    <table class="board">
+      <tr v-for="j in h">
+        <td v-for="i in w">
+          <Cell v-model="items[j-1][i-1]" @clickEvent="handleMessage"/>
+        </td>
+      </tr>
+    </table>
   </div>
 </template>
 

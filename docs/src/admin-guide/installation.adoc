@@ -1,0 +1,3 @@
+= Installation
+
+https://github.com/inception-project/inception/blob/main/inception/inception-doc/src/main/resources/META-INF/asciidoc/admin-guide/installation.adoc

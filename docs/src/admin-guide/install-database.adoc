@@ -1,0 +1,5 @@
+= Base de données
+
+https://github.com/inception-project/inception/blob/main/inception/inception-doc/src/main/resources/META-INF/asciidoc/admin-guide/installation_database.adoc
+
+https://github.com/inception-project/inception/blob/main/inception/inception-doc/src/main/resources/META-INF/asciidoc/admin-guide/installation_database_hsqldb.adoc

@@ -1,7 +1,7 @@
 <template>
-  <i v-if="modelValue.isAlive" class="green bi bi-tree-fill" @click="cellClickEvent($event)"></i>
-  <i v-if="modelValue.isBurning" class="red bi bi-fire"></i>
   <i v-if="modelValue.isDead" class="black bi bi-tree"></i>
+  <i v-else-if="modelValue.isBurning" class="red bi bi-fire"></i>
+  <i v-else class="green bi bi-tree-fill" @click="cellClickEvent($event)"></i>
 </template>
 
 <script lang="ts">

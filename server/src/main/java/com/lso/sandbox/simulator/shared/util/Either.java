@@ -66,6 +66,19 @@ public interface Either<L, R> {
         }
     }
 
+    static <L, S, T, U> Either<L, Tuple2<S, T>> merge(Either<L, S> some, Either<L, T> other) {
+
+        if (some.isLeft()) {
+            return Either.left(some.getLeft());
+        }
+
+        if (other.isLeft()) {
+            return Either.left(other.getLeft());
+        }
+
+        return Either.right(new Tuple2<>(some.get(), other.get()));
+    }
+
     final class Right<L, R> implements Either<L, R>, Serializable {
 
         private final R value;

@@ -1,0 +1,14 @@
+= System Properties
+
+[cols="4*", options="header"]
+|===
+| Setting
+| Description
+| Default
+| Example
+
+| wicket.core.settings.general.configuration-type
+| Enable Wicket debug mode
+| deployment
+| development
+|===

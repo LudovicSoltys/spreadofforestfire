@@ -1,26 +1,21 @@
 <script>
-import axios from 'axios'
-import Cell from './Cell.vue'
+import { getCurrentBoard, resetBoard } from './board.api';
+import { getAllCells } from './cells.api';
+import { getAllFires, createFires, nextFires } from './fires.api';
 
-const httpClient = axios.create({
-  baseURL: 'http://localhost:8080/',
-  headers: {
-    "Cache-Control": "no-cache",
-    "Content-Type": "application/json;charset=utf-8",
-    "Access-Control-Allow-Origin": "*",
-  },
-});
+import Grid from './Grid.vue'
 
 export default {
-  components: { Cell },
+  components: { Grid },
   data() {
     return {
+      isLoading: false,
       h: 0,
       w: 0,
       items: [],
       selectedCells: [],
       newWidth: 0,
-      newHeight: 0
+      newHeight: 0,
     };
   },
   computed: {
@@ -31,47 +26,27 @@ export default {
       return this.items;
     },
   },
-  mounted() {
-
+  async mounted() {
     console.log("mounted()");
-    if (this.w === this.newWidth && this.h === this.newHeight) {
-      return;
-    }
-
-    console.log("mounted() updates items");
-    let array = [];
-    for(var i=0;i<this.newHeight;i++) {
-        array[i] = [];
-        for(var j=0; j<this.newWidth; j++) {
-            array[i][j]={
-              x: j,
-              y: i,
-              value: "X",
-              isAlive: true,
-              isBurning: false,
-              isDead: false
-            };
-        }
-    }
-    this.items = array;
-    this.w = this.newWidth;
-    this.h = this.newHeight;
-
-    this.selectedCells = [];
+    // set loading screen
+    this.isLoading = true;
+    await this.fetchBoard();
+    this.isLoading = false;
   },
   emits: ['update:h', 'update:w'],
   methods: {
     callReset() {
       console.log("call Reset : " + this.newWidth + ", " + this.newHeight);
       this.resetBoard();
-
-      const list = this.getCells();
-
-      this.selectedCells = [];
+      this.resetCells();
+      this.resetSelectedCells();
     },
     callNextStep() {
       console.log("call NextStep");
       this.nextStep();
+    },
+    resetSelectedCells() {
+      this.selectedCells = [];
     },
     callNextWidth(value) {
       console.log("call NextWidth : " + value);
@@ -89,35 +64,74 @@ export default {
       console.log("handleMessage : ", message);
       this.selectedCells.push(message);
     },
-    async getCells() {
-      const response = await httpClient.get('/api/cells');
-      console.log(response);
-      this.items = response.items;
+    async resetCells() {
+
+      let array = Array(this.newHeight).fill(Array(this.newWidth));
+      console.log(array);
+      for(let i=0;i<this.newHeight;i++) {
+        for(let j=0; j<this.newWidth; j++) {
+          console.log(">> array[" + j +"][" + i + "]", array[j], array[j][i]);
+          array[j][i] = {
+            x: j,
+            y: i,
+            value: "array[" + j +"][" + i + "]",
+            isAlive: true,
+            isBurning: false,
+            isDead: false
+          };
+        }
+      }
+      this.items = array;
+      console.log(array);
+
+      this.w = this.newWidth;
+      this.h = this.newHeight;
     },
     async addFires() {
-      const params = {
-        "dryRun": false,
-        "targets": this.selectedCells
-      }
-      const response = await httpClient.post('/api/fires', params);
+      const response = await createFires(false, this.selectedCells);
       console.log(response);
+      response.data.forEach(function (item, index, array) {
+        console.log(item, index);
+        this.items[item.y][item.x].isAlive = !item.isBurning && !item.isDead;
+        this.items[item.y][item.x].isBurning = item.isBurning;
+        this.items[item.y][item.x].isBurning = item.isDead;
+      });
+      this.selectedCells = [];
     },
-    async resetBoard() {
-      const params = {
-        "attributes": {
-          "width": this.newWidth,
-          "height": this.newHeight
-        }
-      };
-      const response = await httpClient.post('/api/board', params);
+    async resetBoard({commit}) {
+      try {
+        const response = await resetBoard(this.newWidth, this.newHeight);
+        console.log(response);
+        commit(response.data);
+      } catch (error) {
+        // handle the error here
+      }
+    },
+    async fetchBoard() {
+      const response = await getCurrentBoard();
       console.log(response);
+      this.h = response.data.height;
+      this.w = response.data.width;
+    },
+    async fetchCells() {
+      const response = await getAllFires();
+      console.log(response);
+      response.data.forEach(function (item, index, array) {
+        console.log(item, index);
+        this.items[item.y][item.x].isAlive = !item.isBurning && !item.isDead;
+        this.items[item.y][item.x].isBurning = item.isBurning;
+        this.items[item.y][item.x].isBurning = item.isDead;
+      });
     },
     async nextStep() {
-      const params = {
-        "dryRun": true
-      };
-      const response = await httpClient.post('/api/fires/next', params);
+      const response = await nextFires(false);
       console.log(response);
+      response.data.forEach(function (item, index, array) {
+        console.log(item, index);
+        this.items[item.y][item.x].isAlive = !item.isBurning && !item.isDead;
+        this.items[item.y][item.x].isBurning = item.isBurning;
+        this.items[item.y][item.x].isBurning = item.isDead;
+      });
     }
   }
 }
@@ -126,19 +140,15 @@ export default {
 <template>
     <div class="simulator">
         <h1 class="green">Simulateur de propagation d'incendies</h1>
-        <table class="board">
-          <tr v-for="j in h">
-            <td v-for="i in w">
-              <Cell v-model="items[j-1][i-1]" @clickEvent="handleMessage"/>
-            </td>
-          </tr>
-        </table>
+        <Grid v-model="items" />
         <div>
           <span>W: </span><input type="text"
                                  :value="w"
+                                 maxlength="2" size="2"
                                  @input="callNextWidth($event.target.value)" />
           <span>H: </span><input type="text"
                                  :value="h"
+                                 maxlength="2" size="2"
                                  @input="callNextHeight($event.target.value)" />
           <button @click="callReset()">reset</button>
           <button @click="callNextStep()">next</button>

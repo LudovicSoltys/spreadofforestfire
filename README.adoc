@@ -17,7 +17,7 @@ Dans l’état initial, une ou plusieurs cases sont en feu.
 Si une case est en feu à l’étape t, alors à l’étape t+1 :
 
 * Le feu s'éteint dans cette case (la case est remplie de cendre et ne peut ensuite plus brûler)
-* et il y a une probabilité p que le feu se propage à chacune des 4 cases adjacentes
+* et il y a une *probabilité p* que le feu se propage à chacune des 4 cases adjacentes
 
 La simulation s’arrête lorsqu’il n’y a plus aucune case en feu
 

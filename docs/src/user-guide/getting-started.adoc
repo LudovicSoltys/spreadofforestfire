@@ -1,0 +1,1 @@
+https://github.com/inception-project/inception/blob/main/inception/inception-doc/src/main/resources/META-INF/asciidoc/user-guide/getting-started.adoc
